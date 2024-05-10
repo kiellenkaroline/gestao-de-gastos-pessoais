@@ -2,7 +2,7 @@
 # 💲 Sistema de gestão de gastos pessoais
 ## 👨🏼‍💻 Membros desevolvedores do projeto:
 
-- André Moreira, Kellyanne Karen, Kiellen Karoline e Layse Bruna.
+- André Moreira, Caio Felipe, Kellyanne Karen, Kiellen Karoline e Layse Bruna.
 
 
 ## ⚙️ Funcionalidades:
