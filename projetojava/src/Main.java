@@ -6,6 +6,8 @@ public class Main {
         ContaFisica cf = new ContaFisica();
         Transacao t = new Transacao();
         Cadastro cd = new Cadastro();
+        Pessoa pessoa = new Pessoa();
+        Conta conta = new Conta();
 
         System.out.println("Seja Bem Vindo ao Cadastro de Conta: ");
         System.out.println("Modalidade: Pessoa Fisica");
