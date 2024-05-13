@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class ContaFisica  extends Pessoa{
-
+    Scanner sc = new Scanner(System.in);
     private int id;
     private double saldo;
     private String cpf;
@@ -32,14 +32,23 @@ public class ContaFisica  extends Pessoa{
 
     public void depositarFisica(Transacao transacao) {
         double saldoAtual = getSaldo();
+
+        System.out.print("Quanto voce deseja depositar? ");
+        transacao.setValor(sc.nextDouble());
+
         double valorDepositado = Transacao.getValor();
-        double novoSaldo = saldoAtual + valorDepositado;
-        setSaldo(novoSaldo);
+
+        if (valorDepositado > 0) {
+            double novoSaldo = saldoAtual + valorDepositado;
+            setSaldo(novoSaldo);
+            System.out.println("Novo saldo: " + getSaldo());
+        } else {
+            System.out.println("Valor inserido incorretamente");
+            depositarFisica(transacao);
+        }
     }
 
     public void sacarFisica(Transacao transacao) {
-        Scanner sc = new Scanner(System.in);
-
         System.out.println("Quanto voce deseja sacar? ");
         transacao.setValor(sc.nextDouble());
 
@@ -61,7 +70,6 @@ public class ContaFisica  extends Pessoa{
         }else {
             System.out.println("Saldo insuficiênte");
         }
-
     }
 
 

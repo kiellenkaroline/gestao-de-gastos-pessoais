@@ -28,11 +28,7 @@ public class Main {
         System.out.println("Idade: " + cf.getIdade());
         System.out.println("CPF: " + cf.getCpf());
 
-        System.out.print("Quanto voce deseja depositar? ");
-        t.setValor(sc.nextDouble());
         cf.depositarFisica(t);
-        System.out.println(cf.getSaldo());
-
         cf.sacarFisica(t);
     }
 }
