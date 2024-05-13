@@ -33,16 +33,7 @@ public class Main {
         cf.depositarFisica(t);
         System.out.println(cf.getSaldo());
 
-        System.out.println("Quanto voce deseja sacar? ");
-        t.setValor(sc.nextDouble());
         cf.sacarFisica(t);
-        System.out.println("Descricao do pagamento: ");
-        t.setDescricao(sc.next());
-        System.out.println("Coloque a data de pagamento: ");
-        t.setData(sc.next());
-        System.out.println(cf.getSaldo());
-        System.out.println("Descricao: " + t.getDescricao());
-        System.out.println("Data do saque: " + t.getData());
     }
 }
 
