@@ -37,9 +37,17 @@ public class ContaFisica  extends Pessoa{
     public void sacarFisica(Transacao transacao) {
         double saldoAtual = getSaldo();
         double valorDepositado = Transacao.getValor();
-        double novoSaldo = saldoAtual - valorDepositado;
-        setSaldo(novoSaldo);
+
+        if (valorDepositado <= saldoAtual) {
+            double novoSaldo = saldoAtual - valorDepositado;
+            setSaldo(novoSaldo);
+            System.out.println("Saque realizado com sucesso");
+        }else {
+            System.out.println("Saldo insuficiênte");
+        }
+
     }
+
 
 
     public void add(ContaFisica contas) {
