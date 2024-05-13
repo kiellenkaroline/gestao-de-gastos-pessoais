@@ -1,5 +1,6 @@
 public class Saque {
     private ContaFisica contas;
+    private Transacao t;
     private boolean realizado;
 
     public Saque(ContaFisica conta) {
@@ -9,7 +10,7 @@ public class Saque {
 
     public void executarSaque(double valor) {
         if (!realizado) {
-            if (contas.sacar(valor)) {
+            if (contas.sacarFisica(t); {
                 System.out.println("Saque de R$" + valor + " realizado com sucesso!");
                 realizado = true;
             } else {
