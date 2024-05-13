@@ -1,15 +1,15 @@
 public class Saque {
-    private Conta conta;
+    private ContaFisica contas;
     private boolean realizado;
 
-    public Saque(Conta conta) {
-        this.conta = conta;
+    public Saque(ContaFisica conta) {
+        this.contas = conta;
         this.realizado = false;
     }
 
     public void executarSaque(double valor) {
         if (!realizado) {
-            if (conta.sacar(valor)) {
+            if (contas.sacar(valor)) {
                 System.out.println("Saque de R$" + valor + " realizado com sucesso!");
                 realizado = true;
             } else {
