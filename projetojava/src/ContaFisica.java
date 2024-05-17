@@ -6,6 +6,15 @@ public class ContaFisica  extends Pessoa{
     private double saldo;
     private String cpf;
     private Transacao transacao;
+    private String senha;
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 
     public String getCpf(){
         return cpf;
@@ -41,6 +50,7 @@ public class ContaFisica  extends Pessoa{
         if (valorDepositado > 0) {
             double novoSaldo = saldoAtual + valorDepositado;
             setSaldo(novoSaldo);
+            System.out.println("Depósito realizado com sucesso!");
             System.out.println("Novo saldo: " + getSaldo());
         } else {
             System.out.println("Valor inserido incorretamente");
@@ -63,12 +73,14 @@ public class ContaFisica  extends Pessoa{
             double novoSaldo = saldoAtual - valorDepositado;
             setSaldo(novoSaldo);
             System.out.println("Saque realizado com sucesso");
-            System.out.println("Novo saldo: " + getSaldo());
+            System.out.println("Saldo Atual: " + getSaldo());
             System.out.println("Descricao: " + transacao.getDescricao());
             System.out.println("Data do saque: " + transacao.getData());
             System.out.println("Valor do saque: " + valorDepositado);
         }else {
-            System.out.println("Saldo insuficiênte");
+            System.out.println("Saldo insuficiênte!");
+            System.out.println("Digite um valor valido.");
+            sacarFisica(transacao);
         }
     }
 

@@ -6,14 +6,10 @@ public class Cadastro {
     private List<Pessoa> pessoas = new ArrayList<>();
     private List<ContaFisica> contas = new ArrayList<>();
     Scanner sc = new Scanner(System.in);
+
     public ContaFisica cadastrarContaFisica() {
         ContaFisica cf = new ContaFisica();
-        MenuConta mc = new Scanner(System.in);
-
-        public ContaFisica cadastrarContaFisica(){
-            ContaFisica cf = new ContaFisica();
-            MenuConta mc = new MenuConta();
-        }
+        MenuConta mc = new MenuConta();
 
         System.out.println("Seja Bem Vindo ao Cadastro de Conta: ");
         System.out.println("Modalidade: Pessoa Fisica");
@@ -41,7 +37,7 @@ public class Cadastro {
 
         fazerLogin();
 
-        return cf; //
+        return cf;
     }
 
     public ContaFisica fazerLogin() {
@@ -54,7 +50,6 @@ public class Cadastro {
         MenuConta mc = new MenuConta();
         if (cf != null) {
             System.out.println("Login efetuado com sucesso!");
-            // O bug estava aqui. mc.exibirMenuConta(sc);
         } else {
             System.out.println("CPF ou senha inválidos!");
             System.exit(0);
