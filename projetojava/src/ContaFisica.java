@@ -1,6 +1,4 @@
-import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class ContaFisica  extends Pessoa{
     Scanner sc = new Scanner(System.in);
@@ -122,14 +120,14 @@ public class ContaFisica  extends Pessoa{
 
 
     }
-//    public void add(ContaFisica contas) {
-//    }
-//
-//    public Map<Categoria, Double> calcularGastosPorCategoria() {
-//        Map<Categoria, Double> gastosPorCategoria = new HashMap<>();
-//
-//        for (Transacao transacao : transacoes) {
-//            Categoria categoria = transacao.getCategoria();
+    public void add(ContaFisica contas) {
+    }
+
+    public Map<Categoria, Double> calcularGastosPorCategoria() {
+        Map<Categoria, Double> gastosPorCategoria = new HashMap<>();
+
+        for (String Transacao : historicoTransacoes) {
+           String categoria = transacao.getCategoria();
 //
 //            if (gastosPorCategoria.containsKey(categoria)) {
 //                double totalGastoCategoria = gastosPorCategoria.get(categoria);

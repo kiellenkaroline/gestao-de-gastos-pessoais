@@ -10,18 +10,6 @@ public class Sistema {
     public void ListaDeCategorias() {
         this.categorias = new ArrayList<>();
     }
-//    public Categoria obterCategoriaPorId(int id) {
-//        for (Categoria categoria : categorias) {
-//            if (categoria.getId() == id) {
-//                return categoria;
-//            }
-//        }
-//        return null;
-//    }
-//
-//    public ArrayList<Categoria> getAllCategorias() {
-//        return (ArrayList<Categoria>) categorias;
-//    }
 
     public ContaFisica cadastrarContaFisica() {
         ContaFisica cf = new ContaFisica();
