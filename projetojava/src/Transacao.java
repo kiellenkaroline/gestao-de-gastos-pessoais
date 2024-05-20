@@ -1,7 +1,20 @@
+import java.util.Date;
+import java.text.SimpleDateFormat;
+
 public class Transacao {
     private int id;
     private String descricao, categoria, data;
     private static double valor;
+    Date dataTransacao = new Date();
+    Date dataHoraAtual = new Date();
+    SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+
+    public String getDataFormatada() {
+        return dataFormatada;
+    }
+
+    String dataFormatada = formatador.format(dataTransacao);
+
     public int getId() {
         return id;
     }

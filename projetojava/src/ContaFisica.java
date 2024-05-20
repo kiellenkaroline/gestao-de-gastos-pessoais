@@ -88,14 +88,14 @@ public class ContaFisica  extends Pessoa{
         if (valorDeSaque <= saldoAtual) {
             System.out.println("Descricao do pagamento: ");
             transacao.setDescricao(sc.next());
-            System.out.println("Coloque a data de pagamento: ");
-            transacao.setData(sc.next());
+//            System.out.println("Coloque a data de pagamento: ");
+//            transacao.setData(sc.next());
             double novoSaldo = saldoAtual - valorDeSaque;
             setSaldo(novoSaldo);
             System.out.println("Saque realizado com sucesso");
             System.out.println("Saldo Atual: " + getSaldo());
             System.out.println("Descricao: " + transacao.getDescricao());
-            System.out.println("Data do saque: " + transacao.getData());
+            System.out.println("Data do saque: " + transacao.getDataFormatada());
             System.out.println("Valor do saque: " + valorDeSaque);
         }else {
             System.out.println("Saldo insuficiênte!");
