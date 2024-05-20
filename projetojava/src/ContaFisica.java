@@ -100,6 +100,9 @@ public class ContaFisica  extends Pessoa {
             System.out.println("Valor inserido incorretamente");
             depositarFisica(transacao);
         }
+        if (valorDepositado > 0) {
+            totalDeposito += valorDepositado;
+        }
 
         historicoTransacoes.add("Valor depositado de: R$ " + valorDepositado);
     }
@@ -128,20 +131,22 @@ public class ContaFisica  extends Pessoa {
             System.out.println("Digite um valor valido.");
             sacarFisica(transacao);
         }
+        if (valorDeSaque > 0 && valorDeSaque <= saldoAtual) {
+            totalSaque += valorDeSaque;
+        }
 
         historicoTransacoes.add("Valor do saque de: R$ " + valorDeSaque);
     }
 
     public void exibirHistoricoTransacoes() {
-        System.out.println("Histórido de transações: ");
-        for (String transacao : historicoTransacoes) {
-            System.out.println(transacao);
-        }
         System.out.println("------------------------------");
         System.out.println("Total de Depósitos: R$ " + totalDeposito);
         System.out.println("Total de Saques: R$ " + totalSaque);
         System.out.println("------------------------------");
-
+        System.out.println("Histórido de transações: ");
+        for (String transacao : historicoTransacoes) {
+            System.out.println(transacao);
+        }
 
     }
 
