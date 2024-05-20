@@ -10,6 +10,7 @@ public class ContaFisica  extends Pessoa{
     private Transacao transacao;
     private String senha;
     private List<String>historicoTransacoes;
+    private int categoriaId;
 
     private double totalDeposito;
     private double totalSaque;
@@ -121,9 +122,24 @@ public class ContaFisica  extends Pessoa{
 
 
     }
-
-
-
     public void add(ContaFisica contas) {
+    }
+
+    public Map<Categoria, Double> calcularGastosPorCategoria() {
+        Map<Categoria, Double> gastosPorCategoria = new HashMap<>();
+    
+        for (Transacao transacao : transacoes) {
+            Categoria categoria = transacao.getCategoria(); 
+    
+            if (gastosPorCategoria.containsKey(categoria)) {
+                double totalGastoCategoria = gastosPorCategoria.get(categoria);
+                totalGastoCategoria += transacao.getValor(); 
+                gastosPorCategoria.put(categoria, totalGastoCategoria);
+            }else {
+                gastosPorCategoria.put(categoria, transacao.getValor()); 
+            }
+        }
+    
+        return gastosPorCategoria;
     }
 }
