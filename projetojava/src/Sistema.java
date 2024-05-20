@@ -2,14 +2,29 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Cadastro {
+public class Sistema {
     private List<Pessoa> pessoas = new ArrayList<>();
     private List<ContaFisica> contas = new ArrayList<>();
+    private List<Categoria> categorias;
     Scanner sc = new Scanner(System.in);
+    public void ListaDeCategorias() {
+        this.categorias = new ArrayList<>();
+    }
+    public Categoria obterCategoriaPorId(int id) {
+        for (Categoria categoria : categorias) {
+            if (categoria.getId() == id) {
+                return categoria;
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<Categoria> getAllCategorias() {
+        return (ArrayList<Categoria>) categorias;
+    }
 
     public ContaFisica cadastrarContaFisica() {
         ContaFisica cf = new ContaFisica();
-        MenuConta mc = new MenuConta();
 
         System.out.println("Seja Bem Vindo ao Cadastro de Conta: ");
         System.out.println("Modalidade: Pessoa Fisica");
@@ -47,7 +62,6 @@ public class Cadastro {
         String senha = sc.next();
 
         ContaFisica cf = verificacaoLogin(cpf, senha);
-        MenuConta mc = new MenuConta();
         if (cf != null) {
             System.out.println("Login efetuado com sucesso!");
         } else {
@@ -81,4 +95,9 @@ public class Cadastro {
     public List<ContaFisica> getContas() {
         return contas;
     }
+    Categoria categoriaSaude = new Categoria(1, "Saúde");
+    Categoria categoriaMoradia = new Categoria(2, "Moradia");
+    Categoria categoriaLazer = new Categoria(3, "Lazer");
+    Categoria categoriaTransporte = new Categoria(4, "Transporte");
+    Categoria categoriaAlimentacao = new Categoria(5, "Alimentação");
 }

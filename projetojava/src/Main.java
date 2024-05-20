@@ -2,8 +2,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        Sistema so = new Sistema();
         Transacao t = new Transacao();
-        Cadastro cd = new Cadastro();
         Scanner sc = new Scanner(System.in);
         ContaFisica cf = null;
 
@@ -13,10 +13,10 @@ public class Main {
 
             switch (opcaoMenuPrincipal) {
                 case 1:
-                    cf = cd.cadastrarContaFisica();
+                    cf = so.cadastrarContaFisica();
                     break;
                 case 2:
-                    cf = cd.fazerLogin();
+                    cf = so.fazerLogin();
                     break;
                 case 0:
                     System.out.println("Saindo da aplicação...");
@@ -69,6 +69,37 @@ public class Main {
                     }
                 }
             }
+        }
+    }
+    static class MenuPrincipal {
+        public int exibirMenuPrincipal(Scanner sc) {
+            System.out.println("\nMenu Principal:");
+            System.out.println("1 - Cadastro de Conta");
+            System.out.println("2 - Login");
+            System.out.println("0 - Sair");
+            System.out.print("Digite a opção desejada: ");
+
+            int opcao = sc.nextInt();
+            sc.nextLine();
+
+            return opcao;
+        }
+    }
+    static class MenuConta {
+        public int exibirMenuConta(Scanner sc) {
+            System.out.println("\nMenu Conta:");
+            System.out.println("1 - Visualizar Saldo");
+            System.out.println("2 - Realizar Depósito");
+            System.out.println("3 - Realizar Saque");
+            System.out.println("4 - Visualizar Extrato");
+            System.out.println("5 - Relatórios");
+            System.out.println("0 - Sair");
+            System.out.print("Digite a opção desejada: ");
+
+            int opcao = sc.nextInt();
+            sc.nextLine();
+
+            return opcao;
         }
     }
 }

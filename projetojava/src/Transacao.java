@@ -2,8 +2,6 @@ public class Transacao {
     private int id;
     private String descricao, categoria, data;
     private static double valor;
-    private TipoTransacao tipoTransacao;
-    private TipoConta tipoConta;
     public int getId() {
         return id;
     }
@@ -42,22 +40,6 @@ public class Transacao {
 
     public void setValor(double valor) {
         this.valor = valor;
-    }
-
-    public TipoTransacao getTipoTransacao() {
-        return tipoTransacao;
-    }
-
-    public void setTipoTransacao(TipoTransacao tipoTransacao) {
-        this.tipoTransacao = tipoTransacao;
-    }
-
-    public TipoConta getTipoConta() {
-        return tipoConta;
-    }
-
-    public void setTipoConta(TipoConta tipoConta) {
-        this.tipoConta = tipoConta;
     }
 
 }
