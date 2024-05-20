@@ -45,7 +45,7 @@ public class Main {
                             System.out.println("Funcao ainda nao desenvolvida");
                             break;
                         case 5:
-                            System.out.println("Funcao ainda nao desenvolvida");
+                            cf.exibirHistoricoTransacoes();
                             break;
                         case 0:
                             System.out.println("Voltando ao menu principal...");
