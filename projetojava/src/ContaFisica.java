@@ -142,4 +142,27 @@ public class ContaFisica  extends Pessoa{
     
         return gastosPorCategoria;
     }
+
+    public String gerarRelatorioGastosPorCategoria() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("## Relatório de Gastos por Categoria\n\n");
+
+        Map<Categoria, Double> gastosPorCategoria = calcularGastosPorCategoria();
+        double totalGeral = 0.0; 
+
+        for (Map.Entry<Categoria, Double> entry : gastosPorCategoria.entrySet()) {
+            Categoria categoria = entry.getKey();
+            Double totalGasto = entry.getValue();
+
+            totalGeral += totalGasto; 
+
+            sb.append("Categoria: ").append(categoria.getNome())
+                    .append(" - Total Gasto: ").append(formatarMoeda(totalGasto)).append("\n");
+        }
+
+        sb.append("\nTotal Geral de Gastos: ").append(formatarMoeda(totalGeral)).append("\n");
+
+        return sb.toString();
+    }
 }
+
