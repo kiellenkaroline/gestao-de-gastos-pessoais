@@ -69,10 +69,6 @@ public class ContaFisica  extends Pessoa{
             System.out.println("Valor inserido incorretamente");
             depositarFisica(transacao);
         }
-        if (valorDepositado > 0){
-            saldo += valorDepositado;
-            totalDeposito += valorDepositado;
-        }
         historicoTransacoes.add("Valor depositado de: R$ "+ valorDepositado);
     }
 
@@ -120,14 +116,14 @@ public class ContaFisica  extends Pessoa{
 
 
     }
-    public void add(ContaFisica contas) {
-    }
-
-    public Map<Categoria, Double> calcularGastosPorCategoria() {
-        Map<Categoria, Double> gastosPorCategoria = new HashMap<>();
-
-        for (String Transacao : historicoTransacoes) {
-           String categoria = transacao.getCategoria();
+//    public void add(ContaFisica contas) {
+//    }
+//
+//    public Map<Categoria, Double> calcularGastosPorCategoria() {
+//        Map<Categoria, Double> gastosPorCategoria = new HashMap<>();
+//
+//        for (String Transacao : historicoTransacoes) {
+//           String categoria = transacao.getCategoria();
 //
 //            if (gastosPorCategoria.containsKey(categoria)) {
 //                double totalGastoCategoria = gastosPorCategoria.get(categoria);
