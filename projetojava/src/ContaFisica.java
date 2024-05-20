@@ -21,18 +21,6 @@ public class ContaFisica  extends Pessoa{
         totalDeposito = 0.0;
         totalSaque = 0.0;
     }
-    public void depositar(double valor) {
-        if (valor > 0){
-            saldo += valor;
-            totalDeposito += valor;
-        }
-    }
-    public void sacar(double valor) {
-        if (valor > 0 && valor <= saldo){
-            saldo -= valor;
-            totalSaque += valor;
-        }
-    }
 
     public String getSenha() {
         return senha;
