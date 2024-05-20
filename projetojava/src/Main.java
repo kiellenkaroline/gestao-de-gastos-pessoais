@@ -42,10 +42,10 @@ public class Main {
                             cf.sacarFisica(t);
                             break;
                         case 4:
-                            System.out.println("Funcao ainda nao desenvolvida");
+                            cf.exibirHistoricoTransacoes();
                             break;
                         case 5:
-                            cf.exibirHistoricoTransacoes();
+                            cf.exibirPorCategoria();
                             break;
                         case 0:
                             System.out.println("Voltando ao menu principal...");

@@ -6,7 +6,13 @@ public class ContaFisica  extends Pessoa {
     private double saldo;
     private String cpf;
     private String senha;
+    private List<String> historicoTransacoes;
+    private List<Double> categoriaSaude,categoriaMoradia,categoriaLazer,categoriaTransporte,categoriaAlimentacao;
 
+    private int categoriaId;
+
+    private double totalDeposito;
+    private double totalSaque;
     public int getCategoriaId() {
         return categoriaId;
     }
@@ -14,15 +20,14 @@ public class ContaFisica  extends Pessoa {
     public void setCategoriaId(int categoriaId) {
         this.categoriaId = categoriaId;
     }
-    private List<String> historicoTransacoes;
-    private int categoriaId;
-
-    private double totalDeposito;
-    private double totalSaque;
-
 
     public ContaFisica() {
         saldo = 0.0;
+        categoriaSaude = new ArrayList<>();
+        categoriaMoradia = new ArrayList<>();
+        categoriaLazer = new ArrayList<>();
+        categoriaTransporte = new ArrayList<>();
+        categoriaAlimentacao = new ArrayList<>();
         historicoTransacoes = new ArrayList<>();
         totalDeposito = 0.0;
         totalSaque = 0.0;
@@ -134,7 +139,17 @@ public class ContaFisica  extends Pessoa {
         if (valorDeSaque > 0 && valorDeSaque <= saldoAtual) {
             totalSaque += valorDeSaque;
         }
-
+        if (categoriaId == 1) {
+            categoriaSaude.add(valorDeSaque);
+        } else if (categoriaId == 2) {
+            categoriaMoradia.add(valorDeSaque);
+        } else if (categoriaId == 3) {
+            categoriaLazer.add(valorDeSaque);
+        } else if (categoriaId == 4) {
+            categoriaTransporte.add(valorDeSaque);
+        } else if (categoriaId == 5) {
+            categoriaAlimentacao.add(valorDeSaque);
+        }
         historicoTransacoes.add("Valor do saque de: R$ " + valorDeSaque);
     }
 
@@ -147,51 +162,33 @@ public class ContaFisica  extends Pessoa {
         for (String transacao : historicoTransacoes) {
             System.out.println(transacao);
         }
-
+    }
+    public void exibirPorCategoria() {
+        System.out.println("------------------------------");
+        System.out.println("Relatório de gastos por categoria: ");
+        System.out.println("------------------------------");
+        System.out.println("Gastos com Saúde: ");
+        for (Double catSaude : categoriaSaude) {
+            System.out.println(catSaude);
+        }
+        System.out.println("Gastos com Moradia: ");
+        for (Double catMoradia : categoriaMoradia) {
+            System.out.println(catMoradia);
+        }
+        System.out.println("Gastos com Lazer: ");
+        for (Double catLazer : categoriaLazer) {
+            System.out.println(catLazer);
+        }
+        System.out.println("Gastos com Transporte: ");
+        for (Double catTransporte : categoriaTransporte) {
+            System.out.println(catTransporte);
+        }
+        System.out.println("Gastos com Alimentacao: ");
+        for (Double catAlimentacao : categoriaAlimentacao) {
+            System.out.println(catAlimentacao);
+        }
     }
 
     public void add(ContaFisica contas) {
     }
 }
-//    public void add(ContaFisica contas) {
-//    }
-//
-//    public Map<Categoria, Double> calcularGastosPorCategoria() {
-//        Map<Categoria, Double> gastosPorCategoria = new HashMap<>();
-//
-//        for (String Transacao : historicoTransacoes) {
-//           String categoria = transacao.getCategoria();
-//
-//            if (gastosPorCategoria.containsKey(categoria)) {
-//                double totalGastoCategoria = gastosPorCategoria.get(categoria);
-//                totalGastoCategoria += transacao.getValor();
-//                gastosPorCategoria.put(categoria, totalGastoCategoria);
-//            }else {
-//                gastosPorCategoria.put(categoria, transacao.getValor());
-//            }
-//        }
-//
-//        return gastosPorCategoria;
-//    }
-//
-//    public String gerarRelatorioGastosPorCategoria() {
-//        StringBuilder sb = new StringBuilder();
-//        sb.append("## Relatório de Gastos por Categoria\n\n");
-//
-//        Map<Categoria, Double> gastosPorCategoria = calcularGastosPorCategoria();
-//        double totalGeral = 0.0;
-//
-//        for (Map.Entry<Categoria, Double> entry : gastosPorCategoria.entrySet()) {
-//            Categoria categoria = entry.getKey();
-//            Double totalGasto = entry.getValue();
-//
-//            totalGeral += totalGasto;
-//
-//            sb.append("Categoria: ").append(categoria.getNome())
-//                    .append(" - Total Gasto: ").append(formatarMoeda(totalGasto)).append("\n");
-//        }
-//
-//        sb.append("\nTotal Geral de Gastos: ").append(formatarMoeda(totalGeral)).append("\n");
-//
-//        return sb.toString();
-//    }

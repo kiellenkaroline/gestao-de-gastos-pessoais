@@ -5,11 +5,7 @@ import java.util.Scanner;
 public class Sistema {
     private List<Pessoa> pessoas = new ArrayList<>();
     private List<ContaFisica> contas = new ArrayList<>();
-    private List<Categoria> categorias;
     Scanner sc = new Scanner(System.in);
-    public void ListaDeCategorias() {
-        this.categorias = new ArrayList<>();
-    }
 
     public ContaFisica cadastrarContaFisica() {
         ContaFisica cf = new ContaFisica();
@@ -84,24 +80,4 @@ public class Sistema {
         return contas;
     }
 
-    {
-    Categoria categoriaSaude = new Categoria(1, "Saúde");
-    Categoria categoriaMoradia = new Categoria(2, "Moradia");
-    Categoria categoriaLazer = new Categoria(3, "Lazer");
-    Categoria categoriaTransporte = new Categoria(4, "Transporte");
-    Categoria categoriaAlimentacao = new Categoria(5, "Alimentação");
-    }
-
-    public Categoria obterCategoriaPorId(int id) {
-        for (Categoria categoria : categorias) {
-            if (categoria.getId() == id) {
-                return categoria;
-            }
-        }
-        return null;
-    }
-
-    public List<Categoria> getAllCategorias() {
-        return categorias;
-    }
 }
