@@ -122,47 +122,47 @@ public class ContaFisica  extends Pessoa{
 
 
     }
-    public void add(ContaFisica contas) {
-    }
-
-    public Map<Categoria, Double> calcularGastosPorCategoria() {
-        Map<Categoria, Double> gastosPorCategoria = new HashMap<>();
-    
-        for (Transacao transacao : transacoes) {
-            Categoria categoria = transacao.getCategoria(); 
-    
-            if (gastosPorCategoria.containsKey(categoria)) {
-                double totalGastoCategoria = gastosPorCategoria.get(categoria);
-                totalGastoCategoria += transacao.getValor(); 
-                gastosPorCategoria.put(categoria, totalGastoCategoria);
-            }else {
-                gastosPorCategoria.put(categoria, transacao.getValor()); 
-            }
-        }
-    
-        return gastosPorCategoria;
-    }
-
-    public String gerarRelatorioGastosPorCategoria() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("## Relatório de Gastos por Categoria\n\n");
-
-        Map<Categoria, Double> gastosPorCategoria = calcularGastosPorCategoria();
-        double totalGeral = 0.0; 
-
-        for (Map.Entry<Categoria, Double> entry : gastosPorCategoria.entrySet()) {
-            Categoria categoria = entry.getKey();
-            Double totalGasto = entry.getValue();
-
-            totalGeral += totalGasto; 
-
-            sb.append("Categoria: ").append(categoria.getNome())
-                    .append(" - Total Gasto: ").append(formatarMoeda(totalGasto)).append("\n");
-        }
-
-        sb.append("\nTotal Geral de Gastos: ").append(formatarMoeda(totalGeral)).append("\n");
-
-        return sb.toString();
-    }
+//    public void add(ContaFisica contas) {
+//    }
+//
+//    public Map<Categoria, Double> calcularGastosPorCategoria() {
+//        Map<Categoria, Double> gastosPorCategoria = new HashMap<>();
+//
+//        for (Transacao transacao : transacoes) {
+//            Categoria categoria = transacao.getCategoria();
+//
+//            if (gastosPorCategoria.containsKey(categoria)) {
+//                double totalGastoCategoria = gastosPorCategoria.get(categoria);
+//                totalGastoCategoria += transacao.getValor();
+//                gastosPorCategoria.put(categoria, totalGastoCategoria);
+//            }else {
+//                gastosPorCategoria.put(categoria, transacao.getValor());
+//            }
+//        }
+//
+//        return gastosPorCategoria;
+//    }
+//
+//    public String gerarRelatorioGastosPorCategoria() {
+//        StringBuilder sb = new StringBuilder();
+//        sb.append("## Relatório de Gastos por Categoria\n\n");
+//
+//        Map<Categoria, Double> gastosPorCategoria = calcularGastosPorCategoria();
+//        double totalGeral = 0.0;
+//
+//        for (Map.Entry<Categoria, Double> entry : gastosPorCategoria.entrySet()) {
+//            Categoria categoria = entry.getKey();
+//            Double totalGasto = entry.getValue();
+//
+//            totalGeral += totalGasto;
+//
+//            sb.append("Categoria: ").append(categoria.getNome())
+//                    .append(" - Total Gasto: ").append(formatarMoeda(totalGasto)).append("\n");
+//        }
+//
+//        sb.append("\nTotal Geral de Gastos: ").append(formatarMoeda(totalGeral)).append("\n");
+//
+//        return sb.toString();
+//    }
 }
 
