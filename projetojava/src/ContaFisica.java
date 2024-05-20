@@ -1,20 +1,27 @@
 import java.util.*;
 
-public class ContaFisica  extends Pessoa{
+public class ContaFisica  extends Pessoa {
     Scanner sc = new Scanner(System.in);
     private int id;
     private double saldo;
     private String cpf;
-    private Transacao transacao;
     private String senha;
-    private List<String>historicoTransacoes;
+
+    public int getCategoriaId() {
+        return categoriaId;
+    }
+
+    public void setCategoriaId(int categoriaId) {
+        this.categoriaId = categoriaId;
+    }
+    private List<String> historicoTransacoes;
     private int categoriaId;
 
     private double totalDeposito;
     private double totalSaque;
 
 
-    public ContaFisica(){
+    public ContaFisica() {
         saldo = 0.0;
         historicoTransacoes = new ArrayList<>();
         totalDeposito = 0.0;
@@ -29,13 +36,14 @@ public class ContaFisica  extends Pessoa{
         this.senha = senha;
     }
 
-    public String getCpf(){
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(String cpf){
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
+
     public int getId() {
         return id;
     }
@@ -52,6 +60,29 @@ public class ContaFisica  extends Pessoa{
         this.saldo = saldo;
     }
 
+
+    public void exibirOpcoesCategorias() {
+        System.out.println("\nMenu Conta:");
+        System.out.println("1 - Saude");
+        System.out.println("2 - Moradia");
+        System.out.println("3 - Lazer");
+        System.out.println("4 - Transporte");
+        System.out.println("5 - Alimentacao");
+        System.out.println("0 - Sair");
+
+
+    }
+
+    private String obterDescricaoCategoria(int categoriaId) {
+        return switch (categoriaId) {
+            case 1 -> "Saúde";
+            case 2 -> "Moradia";
+            case 3 -> "Lazer";
+            case 4 -> "Transporte";
+            case 5 -> "Alimentação";
+            default -> "Categoria inválida";
+        };
+    }
     public void depositarFisica(Transacao transacao) {
         double saldoAtual = getSaldo();
 
@@ -69,7 +100,8 @@ public class ContaFisica  extends Pessoa{
             System.out.println("Valor inserido incorretamente");
             depositarFisica(transacao);
         }
-        historicoTransacoes.add("Valor depositado de: R$ "+ valorDepositado);
+
+        historicoTransacoes.add("Valor depositado de: R$ " + valorDepositado);
     }
 
     public void sacarFisica(Transacao transacao) {
@@ -77,45 +109,45 @@ public class ContaFisica  extends Pessoa{
         transacao.setValor(sc.nextDouble());
 
         double saldoAtual = getSaldo();
-        double valorDeSaque= Transacao.getValor();
+        double valorDeSaque = Transacao.getValor();
 
         if (valorDeSaque <= saldoAtual) {
-            System.out.println("Descricao do pagamento: ");
-            transacao.setDescricao(sc.next());
-//            System.out.println("Coloque a data de pagamento: ");
-//            transacao.setData(sc.next());
+            exibirOpcoesCategorias();
+            setCategoriaId(sc.nextInt());
+            String descricaoCategoria = obterDescricaoCategoria(categoriaId);
+            transacao.setDescricao(descricaoCategoria);
             double novoSaldo = saldoAtual - valorDeSaque;
             setSaldo(novoSaldo);
             System.out.println("Saque realizado com sucesso");
             System.out.println("Saldo Atual: " + getSaldo());
-            System.out.println("Descricao: " + transacao.getDescricao());
+            System.out.println("Categoria: " + obterDescricaoCategoria(categoriaId));
             System.out.println("Data do saque: " + transacao.getDataFormatada());
             System.out.println("Valor do saque: " + valorDeSaque);
-        }else {
+        } else {
             System.out.println("Saldo insuficiênte!");
             System.out.println("Digite um valor valido.");
             sacarFisica(transacao);
         }
-        if (valorDeSaque > 0 && valorDeSaque <= saldo){
-            saldo -= valorDeSaque;
-            totalSaque += valorDeSaque;
-        }
 
-        historicoTransacoes.add("Valor do saque de: R$ "+ valorDeSaque);
+        historicoTransacoes.add("Valor do saque de: R$ " + valorDeSaque);
     }
 
-    public void exibirHistoricoTransacoes(){
+    public void exibirHistoricoTransacoes() {
         System.out.println("Histórido de transações: ");
-        for(String transacao: historicoTransacoes){
+        for (String transacao : historicoTransacoes) {
             System.out.println(transacao);
         }
         System.out.println("------------------------------");
-        System.out.println("Total de Depósitos: R$ "+ totalDeposito);
-        System.out.println("Total de Saques: R$ "+ totalSaque);
+        System.out.println("Total de Depósitos: R$ " + totalDeposito);
+        System.out.println("Total de Saques: R$ " + totalSaque);
         System.out.println("------------------------------");
 
 
     }
+
+    public void add(ContaFisica contas) {
+    }
+}
 //    public void add(ContaFisica contas) {
 //    }
 //
@@ -158,5 +190,3 @@ public class ContaFisica  extends Pessoa{
 //
 //        return sb.toString();
 //    }
-}
-
