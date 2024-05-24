@@ -95,9 +95,17 @@ public class ContaFisica  extends Pessoa {
         System.out.println("------------------------------");
         System.out.println("Metas Financeiras:");
         System.out.println("------------------------------");
-        System.out.println("Objetivo Financeiro: " + getMeta());
-        System.out.println("Poupanca: " + poupanca);
-        System.out.println("Faltam R$ " + (meta - poupanca) + " para atingir sua Meta Financeira" );
+        if (meta == 0.0) {
+            System.out.println("Meta Financeira ainda nao definida!");
+        } else if (poupanca >= meta) {
+            System.out.println("Objetivo Financeiro: " + getMeta());
+            System.out.println("Poupanca: " + poupanca);
+            System.out.println("Voce atingiu sua meta Financeira");
+        } else {
+            System.out.println("Objetivo Financeiro: " + getMeta());
+            System.out.println("Poupanca: " + poupanca);
+            System.out.println("Faltam R$ " + (meta - poupanca) + " para atingir sua Meta Financeira" );
+        }
     }
     public void exibirOpcoesCategorias() {
         System.out.println("\nMenu Conta:");
