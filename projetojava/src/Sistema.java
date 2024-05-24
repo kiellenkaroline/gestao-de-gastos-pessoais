@@ -50,7 +50,7 @@ public class Sistema {
             System.out.println("Login efetuado com sucesso!");
         } else {
             System.out.println("CPF ou senha inválidos!");
-            System.exit(0);
+            fazerLogin();
         }
         return cf;
     }

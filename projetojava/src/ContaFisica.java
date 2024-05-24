@@ -8,15 +8,23 @@ public class ContaFisica  extends Pessoa {
     private String senha;
     private List<String> historicoTransacoes;
     private List<Double> categoriaSaude,categoriaMoradia,categoriaLazer,categoriaTransporte,categoriaAlimentacao;
-
     private int categoriaId;
-
+    private double totalSaude, totalMoradia, totalLazer, totalTransporte, totalAlimentacao;
     private double totalDeposito;
     private double totalSaque;
+    private double meta, poupanca;
+
+    public double getMeta() {
+        return meta;
+    }
+
+    public void setMeta(double meta) {
+        this.meta = meta;
+    }
+
     public int getCategoriaId() {
         return categoriaId;
     }
-
     public void setCategoriaId(int categoriaId) {
         this.categoriaId = categoriaId;
     }
@@ -31,6 +39,12 @@ public class ContaFisica  extends Pessoa {
         historicoTransacoes = new ArrayList<>();
         totalDeposito = 0.0;
         totalSaque = 0.0;
+        totalSaude = 0.0;
+        totalMoradia = 0.0;
+        totalLazer = 0.0;
+        totalTransporte = 0.0;
+        totalAlimentacao = 0.0;
+        poupanca = 0.0;
     }
 
     public String getSenha() {
@@ -65,7 +79,26 @@ public class ContaFisica  extends Pessoa {
         this.saldo = saldo;
     }
 
-
+    public void exibirInformacoes() {
+        System.out.println("------------------------------");
+        System.out.println("Informacoes sobre a conta:");
+        System.out.println("------------------------------");
+        System.out.println("Nome: " + getNome());
+        System.out.println("Idade: " + getIdade());
+        System.out.println("CPF: " + getCpf());
+    }
+    public void definirMeta() {
+        System.out.println("Defina o valor de sua meta financeira: ");
+        setMeta(sc.nextDouble());
+    }
+    public void metaFinanceira() {
+        System.out.println("------------------------------");
+        System.out.println("Metas Financeiras:");
+        System.out.println("------------------------------");
+        System.out.println("Objetivo Financeiro: " + getMeta());
+        System.out.println("Poupanca: " + poupanca);
+        System.out.println("Faltam R$ " + (meta - poupanca) + " para atingir sua Meta Financeira" );
+    }
     public void exibirOpcoesCategorias() {
         System.out.println("\nMenu Conta:");
         System.out.println("1 - Saude");
@@ -73,6 +106,7 @@ public class ContaFisica  extends Pessoa {
         System.out.println("3 - Lazer");
         System.out.println("4 - Transporte");
         System.out.println("5 - Alimentacao");
+        System.out.println("6 - Poupanca");
         System.out.println("0 - Sair");
 
 
@@ -85,6 +119,7 @@ public class ContaFisica  extends Pessoa {
             case 3 -> "Lazer";
             case 4 -> "Transporte";
             case 5 -> "Alimentação";
+            case 6 -> "Poupanca";
             default -> "Categoria inválida";
         };
     }
@@ -141,14 +176,21 @@ public class ContaFisica  extends Pessoa {
         }
         if (categoriaId == 1) {
             categoriaSaude.add(valorDeSaque);
+            totalSaude += valorDeSaque;
         } else if (categoriaId == 2) {
             categoriaMoradia.add(valorDeSaque);
+            totalMoradia += valorDeSaque;
         } else if (categoriaId == 3) {
             categoriaLazer.add(valorDeSaque);
+            totalLazer += valorDeSaque;
         } else if (categoriaId == 4) {
             categoriaTransporte.add(valorDeSaque);
+            totalTransporte += valorDeSaque;
         } else if (categoriaId == 5) {
             categoriaAlimentacao.add(valorDeSaque);
+            totalAlimentacao += valorDeSaque;
+        } else if (categoriaId ==6) {
+            poupanca += valorDeSaque;
         }
         historicoTransacoes.add("Valor do saque de: R$ " + valorDeSaque);
     }
@@ -171,22 +213,34 @@ public class ContaFisica  extends Pessoa {
         for (Double catSaude : categoriaSaude) {
             System.out.println(catSaude);
         }
+        System.out.println("Total gasto com Saúde: " + totalSaude);
+        System.out.println("------------------------------");
         System.out.println("Gastos com Moradia: ");
         for (Double catMoradia : categoriaMoradia) {
             System.out.println(catMoradia);
         }
+        System.out.println("Total gasto com Moradia: " + totalMoradia);
+        System.out.println("------------------------------");
         System.out.println("Gastos com Lazer: ");
         for (Double catLazer : categoriaLazer) {
             System.out.println(catLazer);
         }
+        System.out.println("Total gasto com Lazer: " + totalLazer);
+        System.out.println("------------------------------");
         System.out.println("Gastos com Transporte: ");
         for (Double catTransporte : categoriaTransporte) {
             System.out.println(catTransporte);
         }
+        System.out.println("Total gasto com Transporte: " + totalTransporte);
+        System.out.println("------------------------------");
         System.out.println("Gastos com Alimentacao: ");
         for (Double catAlimentacao : categoriaAlimentacao) {
             System.out.println(catAlimentacao);
         }
+        System.out.println("Total gasto com Alimentacao: " + totalAlimentacao);
+        System.out.println("------------------------------");
+
+        System.out.println("Valor Destinado a Poupanca: " + poupanca);
     }
 
     public void add(ContaFisica contas) {

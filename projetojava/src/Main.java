@@ -47,6 +47,15 @@ public class Main {
                         case 5:
                             cf.exibirPorCategoria();
                             break;
+                        case 6:
+                            cf.exibirInformacoes();
+                            break;
+                        case 7:
+                            cf.metaFinanceira();
+                            break;
+                        case 8:
+                            cf.definirMeta();
+                            break;
                         case 0:
                             System.out.println("Voltando ao menu principal...");
                             cf = null;
@@ -93,6 +102,9 @@ public class Main {
             System.out.println("3 - Realizar Saque");
             System.out.println("4 - Visualizar Extrato");
             System.out.println("5 - Relatórios");
+            System.out.println("6 - Informacoes Sobre a Conta");
+            System.out.println("7 - Vizualizar Meta financeira e poupanca");
+            System.out.println("8 - Definir/alterar meta Financeira");
             System.out.println("0 - Sair");
             System.out.print("Digite a opção desejada: ");
 
