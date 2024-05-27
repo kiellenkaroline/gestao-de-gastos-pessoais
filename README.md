@@ -17,8 +17,6 @@
 
 - Encapsulamento: Os dados privados das classes serão ocultados, acessíveis apenas através de métodos públicos, garantindo a segurança e integridade das informações.
 - Herança: Classes derivadas herdarão atributos e métodos de classes ancestrais, promovendo reuso de código e facilitando a especialização.
-- Abstração: Classes abstratas definirão funcionalidades comuns a classes derivadas, sem implementação completa, permitindo a criação de subclasses com comportamentos específicos.
-- Interfaces: Interfaces definirão contratos que as classes devem implementar, promovendo flexibilidade e desacoplamento entre as classes.
 - Polimorfismo: Métodos com a mesma assinatura em classes derivadas apresentarão comportamentos distintos, permitindo flexibilidade na utilização do sistema.
 - Listas: Coleções de objetos serão utilizadas para armazenar transações, contas e categorias, facilitando a manipulação e organização dos dados.
 - Métodos com Regras de Negócio: A lógica de negócio do sistema será encapsulada em métodos específicos, garantindo a modularidade e reutilização do código.
